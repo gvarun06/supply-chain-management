@@ -29,4 +29,134 @@ Experience system is provided to detail every aspect of the project. This includ
 architecture, AI model details, code explanations, and usage guidelines for both users and 
 administrators. Feedback from the project demonstration will be collected from instructors, stakeholders, 
 and a broader group of test users. This feedback will be used to make final refinements 
-before project handover.
+before project handover. # Supply Chain Management Dashboard
+
+## Overview
+
+This project is a **web-based Supply Chain Management Dashboard** developed using **Python (Flask)** and **HTML/CSS**. It displays real-time data for key areas of the supply chain:
+- **Suppliers**
+- **Inventory**
+- **Orders**
+- **Deliveries**
+
+The goal is to provide a simple, readable dashboard interface that centralizes essential supply chain data for monitoring and decision-making.
+
+---
+
+## Features
+
+- Built using **Flask**, a lightweight Python web framework.
+- Dynamic rendering of structured data using Jinja2 templating.
+- Clean and responsive HTML/CSS design.
+- Modular structure for easy expansion of suppliers, inventory, orders, and deliveries.
+
+---
+
+## Project Structure
+
+```
+project/
+â”‚
+â”œâ”€â”€ app.py                # Main Flask application
+â””â”€â”€ README.md             # Documentation (this file)
+```
+
+---
+
+## How It Works
+
+### 1. Flask Setup
+
+```python
+from flask import Flask, render_template_string
+```
+
+- We import Flask and `render_template_string` to serve HTML content directly from Python.
+
+### 2. Data Definitions
+
+```python
+suppliers = [...]
+inventory = [...]
+orders = [...]
+deliveries = [...]
+```
+
+- These are **Python dictionaries** representing each section of the dashboard. This simulates backend data (could later be replaced by database queries).
+
+### 3. HTML Template
+
+```python
+html_template = """..."""
+```
+
+- A full HTML document embedded as a Python multiline string.
+- Uses **Jinja2** templating syntax (`{{ variable }}` and `{% for %}` loops) to inject dynamic content.
+
+### 4. Flask Route
+
+```python
+@app.route("/")
+def dashboard():
+    return render_template_string(
+        html_template,
+        suppliers=suppliers,
+        inventory=inventory,
+        orders=orders,
+        deliveries=deliveries
+    )
+```
+
+- Renders the HTML template and passes data dictionaries as context variables.
+
+### 5. Running the App
+
+```python
+if __name__ == "__main__":
+    app.run(debug=True)
+```
+
+- Starts a local web server with `debug=True` for development.
+
+---
+
+## HTML/CSS Highlights
+
+- Structured into four main sections: **Suppliers**, **Inventory**, **Orders**, and **Deliveries**.
+- Each section has a clean `table` with headers and dynamic rows.
+- CSS provides a modern and professional look:
+  - Light gray background
+  - White card-style sections with shadows
+  - Colorful headers for emphasis (`#3498db` blue)
+
+---
+
+## Key Concepts and Benefits
+
+| Concept                     | Explanation                                                                 |
+|----------------------------|-----------------------------------------------------------------------------|
+| Flask Web Framework        | Serves as the backend for routing and templating                           |
+| Jinja2 Templating          | Allows embedding dynamic data into HTML                                     |
+| Separation of Concerns     | Data, logic, and presentation are well-organized                           |
+| Scalability                | Easy to integrate with databases or REST APIs later                         |
+| Lightweight UI             | Minimal dependencies and fast loading                                      |
+
+---
+
+## How to Run
+
+1. **Install Flask** (if not already installed):
+   ```bash
+   pip install flask
+   ```
+
+2. **Run the Application**:
+   ```bash
+   python app.py
+   ```
+
+3. **Open Your Browser**:
+   Navigate to `http://127.0.0.1:5000/`
+
+---
+
